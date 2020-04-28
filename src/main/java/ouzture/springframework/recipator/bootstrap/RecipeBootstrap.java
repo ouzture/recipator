@@ -1,8 +1,10 @@
 package ouzture.springframework.recipator.bootstrap;
 
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.context.ApplicationListener;
 import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
+import org.springframework.transaction.annotation.Transactional;
 import ouzture.springframework.recipator.domain.*;
 import ouzture.springframework.recipator.domain.repositories.CategoryRepository;
 import ouzture.springframework.recipator.domain.repositories.RecipeRepository;
@@ -14,6 +16,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Component
+@Slf4j
 public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEvent> {
 
     private final CategoryRepository categoryRepository;
@@ -27,11 +30,14 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
     }
 
     @Override
+    @Transactional
     public void onApplicationEvent(ContextRefreshedEvent event) {
         recipeRepository.saveAll(getRecipes());
     }
 
     private List<Recipe> getRecipes() {
+
+        log.debug("Starting bootstrapping");
 
         List<Recipe> recipes = new ArrayList<>(2);
 
@@ -196,5 +202,8 @@ public class RecipeBootstrap implements ApplicationListener<ContextRefreshedEven
         tacosRecipe.getCategories().add(mexicanCategory);
 
         recipes.add(tacosRecipe);
+
+        log.debug("Ending bootstrapping");
+
         return recipes;
     }}
