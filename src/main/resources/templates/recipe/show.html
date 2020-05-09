@@ -4,6 +4,9 @@
     <meta charset="UTF-8"/>
     <title>Show Recipe</title>
 
+    <script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
+
+    <script src="/webjars/popper.js/2.0.2/umd/popper.min.js"></script>
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css"
           integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh"
@@ -26,11 +29,9 @@
                         <div class="col-md-3">
                             <h5>Categories:</h5>
                         </div>
-                        <div class="col-md-9">
-                            <ul>
-                                <li>cat one</li>
-                                <li>cat two</li>
-                                <li>cat three</li>
+                        <div class="col-md-9"  >
+                            <ul th:each="category : ${recipe.categories}">
+                                <li th:text="${category.description}">cat one</li>
                             </ul>
                         </div>
                     </div>
@@ -39,27 +40,27 @@
                             <h5>Prep Time:</h5>
                         </div>
                         <div class="col-md-3">
-                            <p>30 min</p>
+                            <p th:text="${recipe.prepTime} + ' Min' ">placeHolder</p>
                         </div>
                         <div class="col-md-3">
                             <h5>Difficulty:</h5>
                         </div>
                         <div class="col-md-3">
-                            <p>Easy</p>
+                            <p th:text="${recipe.difficulty}">placeHolder</p>
                         </div>
                     </div>
                     <div class="row">
                         <div class="col-md-3">
-                            <h5>Cooktime:</h5>
+                            <h5>Cook time:</h5>
                         </div>
                         <div class="col-md-3">
-                            <p>30 min</p>
+                            <p th:text="${recipe.cookTime} + ' Min'" >placeHolder</p>
                         </div>
                         <div class="col-md-3">
                             <h5>Servings:</h5>
                         </div>
                         <div class="col-md-3">
-                            <p>4</p>
+                            <p th:text="${recipe.servings}">placeHolder</p>
                         </div>
                     </div>
                     <div class="row">
@@ -67,13 +68,13 @@
                             <h5>Source:</h5>
                         </div>
                         <div class="col-md-3">
-                            <p>30 min</p>
+                            <p th:text="${recipe.source}">placeHolder</p>
                         </div>
                         <div class="col-md-3">
                             <h5>URL:</h5>
                         </div>
                         <div class="col-md-3">
-                            <p>http://www.example.com</p>
+                            <a th:href="${recipe.url}"> <p th:text="${recipe.description}">placeHolder</p></a>
                         </div>
                     </div>
                 </div>
@@ -86,10 +87,9 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <ul>
-                                <li>1 Cup of milk</li>
-                                <li>1 Teaspoon of chocolate</li>
-                                <li>1 Teaspoon of Sugar</li>
+                            <ul th:each="ingredient : ${recipe.ingredients}">
+                                <li th:text="${ingredient.amount + ' ' + ingredient.uom.description + ' ' + ingredient.description}">placeHolder</li>
+
                             </ul>
                         </div>
                     </div>
@@ -103,7 +103,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</p>
+                            <p th:text="${recipe.directions}">placeHolder</p>
                         </div>
                     </div>
                 </div>
@@ -116,7 +116,7 @@
                 <div class="card-body">
                     <div class="row">
                         <div class="col-md-12">
-                            <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit. Aenean commodo ligula eget dolor. Aenean massa. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Donec quam felis, ultricies nec, pellentesque eu, pretium quis, sem. Nulla consequat massa quis enim. Donec pede justo, fringilla vel, aliquet nec, vulputate eget, arcu. In enim justo, rhoncus ut, imperdiet a, venenatis vitae, justo. Nullam dictum felis eu pede mollis pretium. Integer tincidunt. Cras dapibus. Vivamus elementum semper nisi. Aenean vulputate eleifend tellus. Aenean leo ligula, porttitor eu, consequat vitae, eleifend ac, enim. Aliquam lorem ante, dapibus in, viverra quis, feugiat a, tellus. Phasellus viverra nulla ut metus varius laoreet. Quisque rutrum. Aenean imperdiet. Etiam ultricies nisi vel augue. Curabitur ullamcorper ultricies nisi. Nam eget dui. Etiam rhoncus. Maecenas tempus, tellus eget condimentum rhoncus, sem quam semper libero, sit amet adipiscing sem neque sed ipsum.</p>
+                            <p th:text="${recipe.notes.recipeNotes}">placeHolder</p>
                         </div>
                     </div>
                 </div>
@@ -126,16 +126,6 @@
     </div>
 </div>
 
-<!-- Optional JavaScript -->
-<!-- jQuery first, then Popper.js, then Bootstrap JS -->
-<script src="/webjars/jquery/3.4.1/jquery.min.js"></script>
 
-<script src="/webjars/popper.js/2.0.2/umd/popper.min.js"></script>
-
-<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
-        integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
-        crossorigin="anonymous"
-        th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}">
-</script>
 </body>
 </html>
