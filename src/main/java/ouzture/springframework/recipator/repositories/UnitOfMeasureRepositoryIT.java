@@ -1,4 +1,4 @@
-package ouzture.springframework.recipator.domain.repositories;
+package ouzture.springframework.recipator.repositories;
 
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

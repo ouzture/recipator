@@ -6,7 +6,7 @@ import org.junit.jupiter.api.Test;
 import org.mockito.Mock;
 import org.mockito.MockitoAnnotations;
 import ouzture.springframework.recipator.domain.Recipe;
-import ouzture.springframework.recipator.domain.repositories.RecipeRepository;
+import ouzture.springframework.recipator.repositories.RecipeRepository;
 
 import java.util.HashSet;
 import java.util.Set;

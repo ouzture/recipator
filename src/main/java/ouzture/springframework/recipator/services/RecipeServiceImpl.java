@@ -3,9 +3,10 @@ package ouzture.springframework.recipator.services;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import ouzture.springframework.recipator.domain.Recipe;
-import ouzture.springframework.recipator.domain.repositories.RecipeRepository;
+import ouzture.springframework.recipator.repositories.RecipeRepository;
 
 import java.util.HashSet;
+import java.util.Optional;
 import java.util.Set;
 
 @Service
@@ -27,5 +28,15 @@ public class RecipeServiceImpl implements RecipeService{
 
         recipeRepository.findAll().iterator().forEachRemaining(recipeSet::add);
         return recipeSet;
+    }
+
+    @Override
+    public Recipe findById(Long id) {
+        final Optional<Recipe> byId = recipeRepository.findById(id);
+        if(! byId.isPresent()) {
+            throw new RuntimeException("Recipe not found");
+        }
+
+        return byId.get();
     }
 }

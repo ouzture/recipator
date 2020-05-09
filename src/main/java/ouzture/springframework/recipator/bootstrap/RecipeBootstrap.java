@@ -6,9 +6,9 @@ import org.springframework.context.event.ContextRefreshedEvent;
 import org.springframework.stereotype.Component;
 import org.springframework.transaction.annotation.Transactional;
 import ouzture.springframework.recipator.domain.*;
-import ouzture.springframework.recipator.domain.repositories.CategoryRepository;
-import ouzture.springframework.recipator.domain.repositories.RecipeRepository;
-import ouzture.springframework.recipator.domain.repositories.UnitOfMeasureRepository;
+import ouzture.springframework.recipator.repositories.CategoryRepository;
+import ouzture.springframework.recipator.repositories.RecipeRepository;
+import ouzture.springframework.recipator.repositories.UnitOfMeasureRepository;
 
 import java.math.BigDecimal;
 import java.util.ArrayList;
