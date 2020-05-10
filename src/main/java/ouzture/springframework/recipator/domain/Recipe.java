@@ -39,7 +39,7 @@ public class Recipe {
     private Byte[] image;
 
     @OneToOne(cascade = CascadeType.ALL)
-    private Notes notes;
+    private Notes notes ;
 
     public Recipe addIngredient(Ingredient ingredient){
         ingredient.setRecipe(this);
@@ -48,8 +48,10 @@ public class Recipe {
     }
 
     public void setNotes(Notes notes){
-        this.notes = notes;
-        notes.setRecipe(this);
+      if (notes != null) {
+            this.notes = notes;
+            notes.setRecipe(this);
+        }
     }
 
 }
