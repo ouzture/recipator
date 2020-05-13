@@ -25,4 +25,39 @@ public class RecipeCommand {
     private Difficulty difficulty;
     private NotesCommand notes;
     private Set<CategoryCommand> categories = new HashSet<>();
+
+
+
+    public static void main(String ... args){
+
+        int[] a = new int[]{3,4,6,6,10};
+
+        HashSet<Integer> set = new HashSet<>();
+        set.add(a[0]);
+
+        for (int i = 1 ; i < a.length;i++){
+
+            if (set.contains(a[i])){
+                boolean added = false;
+                int currentVal = a[i];
+                while(!added){
+                    currentVal++;
+
+                    if(!set.contains(currentVal)){
+                      set.add(currentVal);
+                      added=true;
+                    }
+
+
+                }
+            }else{
+                set.add(a[i]);
+            }
+
+        }
+
+        System.out.println(set);
+
+    }
+
 }
