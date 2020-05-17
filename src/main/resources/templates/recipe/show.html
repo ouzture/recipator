@@ -24,7 +24,21 @@
                     <div class="card-title">
                         <h1 class="card-body" th:text="${recipe.description}">Recipe Description Here!</h1>
                     </div>
+
                     <div class="card-body">
+                        <div class="row">
+                            <div class="col-md-3 offset-md-6">
+                                <img src="../../static/images/guacamole400x400WithX.jpg"
+                                     th:src="@{/images/guacamole400x400WithX.jpg}"
+                                     width="200" height="200">
+                            </div>
+                        </div>
+                        <div class="row">
+                            <div class="row col-md-3 offset-md-6">
+                                <a class="btn btn-primary" href="#"
+                                   th:href="@{'/recipe/' + ${recipe.id} + '/image'}" role="button">Change Image</a>
+                            </div>
+                        </div>
                         <div class="row">
                             <div class="col-md-3">
                                 <h5>Categories:</h5>
@@ -37,6 +51,8 @@
                                 </ul>
                             </div>
                         </div>
+
+
                         <div class="row">
                             <div class="col-md-3">
                                 <h5>Prep Time:</h5>
