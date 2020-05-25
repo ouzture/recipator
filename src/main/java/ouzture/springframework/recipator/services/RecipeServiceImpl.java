@@ -7,6 +7,7 @@ import ouzture.springframework.recipator.commands.RecipeCommand;
 import ouzture.springframework.recipator.converters.RecipeCommandToRecipe;
 import ouzture.springframework.recipator.converters.RecipeToRecipeCommand;
 import ouzture.springframework.recipator.domain.Recipe;
+import ouzture.springframework.recipator.exceptions.NotFoundException;
 import ouzture.springframework.recipator.repositories.RecipeRepository;
 
 import java.util.HashSet;
@@ -41,7 +42,7 @@ public class RecipeServiceImpl implements RecipeService{
     public Recipe findById(Long id) {
         final Optional<Recipe> byId = recipeRepository.findById(id);
         if(! byId.isPresent()) {
-            throw new RuntimeException("Recipe not found");
+            throw new NotFoundException("Recipe not found");
         }
         return byId.get();
     }
