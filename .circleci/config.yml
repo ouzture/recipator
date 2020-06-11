@@ -17,12 +17,17 @@ jobs:
       - run:
           name: Run Tests
           command: mvn verify --settings 'pom.xml'
+      - store_artifacts:
+          path:  target
       - save_cache:
           paths:
             - ~/.m2
           key: maven-{{ checksum "/tmp/maven_cache_seed" }}
       - store_test_results:
           path: target/surefire-reports
+      - run:
+          name: Send to CodeCov
+          command: bash <(curl -s https://codecov.io/bash)
 workflows:
   maven_test:
     jobs:
