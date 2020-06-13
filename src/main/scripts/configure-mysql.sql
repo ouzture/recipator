@@ -17,10 +17,21 @@ GRANT SELECT ON sfg_dev.* to 'sfg_dev_user'@'localhost';
 GRANT INSERT ON sfg_dev.* to 'sfg_dev_user'@'localhost';
 GRANT DELETE ON sfg_dev.* to 'sfg_dev_user'@'localhost';
 GRANT UPDATE ON sfg_dev.* to 'sfg_dev_user'@'localhost';
+GRANT CREATE ON sfg_dev.* to 'sfg_dev_user'@'localhost';
+GRANT DROP ON sfg_dev.* to 'sfg_dev_user'@'localhost';
+GRANT ALTER ON sfg_dev.* to 'sfg_dev_user'@'localhost';
+GRANT REFERENCES ON sfg_dev.* to 'sfg_dev_user'@'localhost';
+
 GRANT SELECT ON sfg_prod.* to 'sfg_prod_user'@'localhost';
 GRANT INSERT ON sfg_prod.* to 'sfg_prod_user'@'localhost';
 GRANT DELETE ON sfg_prod.* to 'sfg_prod_user'@'localhost';
 GRANT UPDATE ON sfg_prod.* to 'sfg_prod_user'@'localhost';
+GRANT CREATE ON sfg_prod.* to 'sfg_prod_user'@'localhost';
+GRANT DROP ON sfg_prod.* to 'sfg_prod_user'@'localhost';
+GRANT ALTER ON sfg_prod.* to 'sfg_prod_user'@'localhost';
+GRANT REFERENCES ON sfg_prod.* to 'sfg_prod_user'@'localhost';
+
+
 GRANT SELECT ON sfg_dev.* to 'sfg_dev_user'@'%';
 GRANT INSERT ON sfg_dev.* to 'sfg_dev_user'@'%';
 GRANT DELETE ON sfg_dev.* to 'sfg_dev_user'@'%';
